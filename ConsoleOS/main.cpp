@@ -22,20 +22,35 @@ int main(int argc, char* argv[])
 
            system("clear");
 
-    string username1 = "username";
+    string username1;
     string username;
 
-    cout << "Please enter your username:   ";
-    cin >> username;
+    //cout << "Please enter your username:   ";
+    //cin >> username;
 
 
-    string password1 = "password";
+    string password1;
     string password;
+    //cout << "Plese enter your password:  ";
+    //cin >> password;
 
-    cout << "Plese enter your password:  ";
+
+    cout <<"Please enter Username: ";
+    cin >> username;
+    cout <<"Please enter Password: ";
     cin >> password;
+    ofstream acc("account.dat",ios::in|ios::out|ios::binary|ios::app);
+    acc.write(reinterpret_cast<char *> (&acc), sizeof(acc));
+    acc << username << endl;
+    acc << password << endl;
+    acc.close();
+    system("clear");
+    cin.get();
+    //main();
 
-    if (username == username1 || password == password1){
+    username1 = username;
+    password1 = password;
+    if (username == username1 && password == password1){
 
     cout << "Welcome";
     cout << "\nHelo User!";
@@ -190,7 +205,7 @@ while (playAgain == 'y'){
 
     if (command == "game")
     {
-       cout <<"\n> 1)GAME1 \n> 2)CHAT BOT \n> 3)ADVENTURE GAME";
+       cout <<"\n> 1)GAME \n> 2)CHAT BOT \n> 3)ADVENTURE GAME";
        string command2;
        cout << "\nPlease Enter your chosen  ";
        cin >> command2;
